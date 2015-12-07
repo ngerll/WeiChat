@@ -16,6 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import sun.net.www.content.image.jpeg;
 
 /**
  * Servlet implementation class WeiChat
@@ -69,6 +73,7 @@ public class WeiChat extends HttpServlet {
 		String toUsername;
 		String sendTime = new Date().getTime() + "";
 		String sendContent;
+		String getContent;
 		
 		
 		SAXReader reader = new SAXReader();
@@ -84,10 +89,39 @@ public class WeiChat extends HttpServlet {
 		Element element = document.getRootElement();
 		fromUsername = element.elementText("FromUserName");
 		toUsername = element.elementText("ToUserName");
+		getContent = element.elementText("Content");
 		
 		sendMsgtype = "text";
 		
-		sendContent = "你好: " + fromUsername + "现在是北京时间: " + sendTime;
+		String getjson = new GetInfo().getInfo(getContent);
+		
+		JSONObject jo = new JSONObject(getjson);
+		
+		if(jo.getString("respcode").equalsIgnoreCase("0000")){
+		
+		
+			JSONArray ja = jo.getJSONArray("feepolicyaddupinfo");
+			
+			
+		
+			StringBuffer sBuffer = new StringBuffer();
+			sBuffer.append("您的套餐使用情况如下：" + "\n");
+			
+			for(int i = 0;i<ja.length();i++){
+				JSONObject feep = new JSONObject(ja.get(i).toString());
+			
+				String feepolicyname = feep.getString("feepolicyname");
+				String xusedvalue = feep.getString("xusedvalue");
+				String xcanusevalue = feep.getString("xcanusevalue");
+				String xexceedvalue = feep.getString("xexceedvalue");
+				sBuffer.append(feepolicyname + "已使用" + xusedvalue + "，还剩余" + xcanusevalue + "，超出套餐" + xexceedvalue + "。\n");
+			}
+			sendContent = sBuffer.toString();
+		}else{
+			sendContent = jo.getString("respdesc");
+		}
+		
+			
 		String xmltext = "<xml>"
 				+ "<ToUserName><![CDATA[%1$s]]></ToUserName>"
 				+ "<FromUserName><![CDATA[%2$s]]></FromUserName>"
@@ -96,9 +130,10 @@ public class WeiChat extends HttpServlet {
 				+ "<Content><![CDATA[%5$s]]></Content>"
 				+ "<FuncFlag>0</FuncFlag>" + "</xml>";
 		
-		String sendxml = xmltext.format(xmltext, fromUsername,toUsername,sendTime,sendMsgtype,sendContent);
+		String sendxml = String.format(xmltext, fromUsername,toUsername,sendTime,sendMsgtype,sendContent);
 		pw.write(sendxml);
 		rd.close();
+		
 	}
 
 }
