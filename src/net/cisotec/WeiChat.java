@@ -94,18 +94,21 @@ public class WeiChat extends HttpServlet {
 		sendMsgtype = "text";
 		
 		String getjson = new GetInfo().getInfo(getContent);
+		String user_info = new GetUser().getUser(getContent);
 		
 		JSONObject jo = new JSONObject(getjson);
+		JSONObject juser = new JSONObject(user_info);
 		
-		if(jo.getString("respcode").equalsIgnoreCase("0000")){
+		if(jo.getString("respcode").equalsIgnoreCase("0000") && juser.getString("respcode").equalsIgnoreCase("0000")){
 		
 		
 			JSONArray ja = jo.getJSONArray("feepolicyaddupinfo");
+			String custname = juser.getString("custname");
 			
 			
-		
 			StringBuffer sBuffer = new StringBuffer();
-			sBuffer.append("您的套餐使用情况如下：" + "\n");
+			
+			sBuffer.append("尊敬的 " + custname + "，您好，您的套餐使用情况如下：" + "\n");
 			
 			for(int i = 0;i<ja.length();i++){
 				JSONObject feep = new JSONObject(ja.get(i).toString());

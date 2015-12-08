@@ -47,7 +47,7 @@ public class GetInfo {
 			
 					
 	}
-	 public static void main(String[] args) {
+	/* public static void main(String[] args) {
 		 new GetInfo().getInfo("15607191388");
-	}
+	}*/
 }
