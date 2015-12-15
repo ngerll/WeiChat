@@ -67,7 +67,6 @@ public class GetNumberInfo {
 
 		String responText = result.getResponse();
 		
-		System.out.println(responText);
 
 		JSONObject jObject = new JSONObject(responText);
 
@@ -81,7 +80,7 @@ public class GetNumberInfo {
 
 	
 	/*	 public static void main(String[] args) { 
-	 	 GetNumberInfo gni = new GetNumberInfo(); gni.getNuminfo("15607191388");
+	 	 GetNumberInfo gni = new GetNumberInfo(); gni.getNuminfo("18671312527");
 		 System.out.println(gni.getProvincecode());
 		 System.out.println(gni.getCitycode());
 		 System.out.println(gni.getNettype());
