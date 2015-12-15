@@ -13,47 +13,47 @@
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry exported="true" kind="lib" path="D:/JAVA_LIB/commons-codec-1.10.jar">
+	<classpathentry kind="lib" path="D:/JAVA_LIB/commons-codec-1.10.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="D:/JAVA_LIB/commons-httpclient-3.1-alpha1.jar">
+	<classpathentry kind="lib" path="D:/JAVA_LIB/commons-httpclient-3.1-alpha1.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="D:/JAVA_LIB/commons-logging-1.2.jar">
+	<classpathentry kind="lib" path="D:/JAVA_LIB/commons-logging-1.2.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="D:/JAVA_LIB/ecaop-client-0.0.2-SNAPSHOT.jar">
+	<classpathentry kind="lib" path="D:/JAVA_LIB/dom4j-2.0.0-RC1.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="D:/JAVA_LIB/fastjson-1.2.5.jar">
+	<classpathentry kind="lib" path="D:/JAVA_LIB/ecaop-client-0.0.2-SNAPSHOT.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="D:/JAVA_LIB/slf4j-1.7.13/slf4j-api-1.7.13.jar">
+	<classpathentry kind="lib" path="D:/JAVA_LIB/fastjson-1.2.5.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="D:/JAVA_LIB/slf4j-1.7.13/slf4j-nop-1.7.13.jar">
+	<classpathentry kind="lib" path="D:/JAVA_LIB/org.json.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="D:/JAVA_LIB/org.json.jar">
+	<classpathentry kind="lib" path="D:/JAVA_LIB/slf4j-1.7.13/slf4j-api-1.7.13.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="D:/JAVA_LIB/dom4j-2.0.0-RC1.jar">
+	<classpathentry kind="lib" path="D:/JAVA_LIB/slf4j-1.7.13/slf4j-nop-1.7.13.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>

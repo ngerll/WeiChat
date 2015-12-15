@@ -93,35 +93,34 @@ public class WeiChat extends HttpServlet {
 		
 		sendMsgtype = "text";
 		
-		String getjson = new GetInfo().getInfo(getContent);
-		String user_info = new GetUser().getUser(getContent);
+		GetNumberInfo gni = new GetNumberInfo();
 		
-		JSONObject jo = new JSONObject(getjson);
-		JSONObject juser = new JSONObject(user_info);
+		gni.getNuminfo(getContent);
 		
-		if(jo.getString("respcode").equalsIgnoreCase("0000") && juser.getString("respcode").equalsIgnoreCase("0000")){
+		String provincecode = gni.getProvincecode();
+		String citycode = gni.getCitycode();
+		String nettype = gni.getNettype();
+		String paytype = gni.getPaytype();
 		
 		
-			JSONArray ja = jo.getJSONArray("feepolicyaddupinfo");
-			String custname = juser.getString("custname");
+		
+		
+		String getinfo = new GetInfo().getInfo(getContent, provincecode, citycode, nettype, paytype);
 			
-			
+		String custname = new GetUser().getUser(getContent, provincecode, citycode, nettype, paytype);
+		
+		
+		
+		if(custname != null && getinfo != null){
+
 			StringBuffer sBuffer = new StringBuffer();
 			
-			sBuffer.append("尊敬的 " + custname + "，您好，您的套餐使用情况如下：" + "\n");
+			sBuffer.append("尊敬的 " + custname + "\n");
+			sBuffer.append(getinfo);		
 			
-			for(int i = 0;i<ja.length();i++){
-				JSONObject feep = new JSONObject(ja.get(i).toString());
-			
-				String feepolicyname = feep.getString("feepolicyname");
-				String xusedvalue = feep.getString("xusedvalue");
-				String xcanusevalue = feep.getString("xcanusevalue");
-				String xexceedvalue = feep.getString("xexceedvalue");
-				sBuffer.append(feepolicyname + "已使用" + xusedvalue + "，还剩余" + xcanusevalue + "，超出套餐" + xexceedvalue + "。\n");
-			}
 			sendContent = sBuffer.toString();
 		}else{
-			sendContent = jo.getString("respdesc");
+			sendContent = "尊敬的用户，系统异常，请稍后再试，谢谢！";
 		}
 		
 			

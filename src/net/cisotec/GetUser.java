@@ -13,7 +13,8 @@ import sun.net.www.content.image.jpeg;
 import org.json.*;
 
 public class GetUser {
-	public String getUser(String number){
+	public String getUser(String number,String provincecode,String citycode,String nettype,String paytype){
+		String username = null;
 		String url = "http://211.94.67.94:8001/openservlet";
 		String appkey = "com.aop.app.hbmicrochannel";
 		String signSecurity = "swUiuzms+bAqgNOhTaJAyaTFVdAhGaG2aPCUJ0o72P/dSFj8aRbFDOXjPTBB5oja9plfRNWgTKP1OFWBF2F85A==";
@@ -25,26 +26,25 @@ public class GetUser {
 		HashMap<String, String> reqMap = new HashMap<>();
 		reqMap.put("apptx", "test" + System.currentTimeMillis());
 		reqMap.put("usernumber", number);	
-		reqMap.put("provincecode", "071");
-		reqMap.put("citycode","710");
-		reqMap.put("nettype", "11");
-		reqMap.put("paytype", "2");
-		//reqMap.put("billdate", "201512");
+		reqMap.put("provincecode", provincecode);
+		reqMap.put("citycode",citycode);
+		reqMap.put("nettype", nettype);
+		reqMap.put("paytype", paytype);	
 		
 		EcAopResult result = ecAopMethod.exec(reqMap);
 		String responText = result.getResponse();
 		
-		/*System.out.println(responText);
+		JSONObject jo = new JSONObject(responText);
 		
-		JSONObject jObject = new JSONObject(responText);
+		if(jo.getString("respcode").equalsIgnoreCase("0000")){
+			username = jo.getString("custname");
+		}else{
+			username = jo.getString("respcode");
+		}
 		
-		String custlvl = jObject.getString("custlvl");
-		String custname = jObject.getString("custname");
-		String certnum = jObject.getString("certnum");*/
 		
 		
-		
-		return responText;
+		return username;
 	}
 
 	/*public static void main(String[] args) {
